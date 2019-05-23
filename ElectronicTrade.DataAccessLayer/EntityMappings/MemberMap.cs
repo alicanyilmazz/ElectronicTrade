@@ -49,12 +49,16 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.UserBy).IsRequired();
             this.Property(x => x.UserBy).HasMaxLength(25);
 
+            this.Property(x => x.MemberType).HasColumnName("MemberType");
+            this.Property(x => x.MemberType).HasColumnOrder(7);
+            this.Property(x => x.MemberType).IsRequired();
+
             this.Property(x => x.AddedDate).HasColumnName("AddedDate");
-            this.Property(x => x.AddedDate).HasColumnOrder(7);
+            this.Property(x => x.AddedDate).HasColumnOrder(8);
             this.Property(x => x.AddedDate).IsRequired();
 
             this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
-            this.Property(x => x.ModifiedDate).HasColumnOrder(8);
+            this.Property(x => x.ModifiedDate).HasColumnOrder(9);
             this.Property(x => x.ModifiedDate).IsOptional();
 
 

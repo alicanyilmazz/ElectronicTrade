@@ -1717,12 +1717,21 @@
     <Content Include="Fonts\webfonts\fa-regular-400.svg" />
     <Content Include="Fonts\webfonts\fa-solid-900.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\as.png" />
-    <Content Include="Images\carosel.jpg" />
-    <Content Include="Images\carosel1.jpg" />
-    <Content Include="Images\carosel2.jpg" />
-    <Content Include="Images\deneme.jpg" />
-    <Content Include="Images\icons8-shopping-cart-96.png" />
+    <Content Include="Images\Homepage\DiscountedProducts\partialproduct_1.jpg" />
+    <Content Include="Images\Homepage\DiscountedProducts\partialproduct_2.jpg" />
+    <Content Include="Images\Homepage\DiscountedProducts\partialproduct_3.jpg" />
+    <Content Include="Images\Homepage\DiscountedProducts\partialproduct_4.jpg" />
+    <Content Include="Images\Homepage\DiscountedProducts\partialproduct_5.jpg" />
+    <Content Include="Images\Homepage\DiscountedProducts\partialproduct_6.jpg" />
+    <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_1.jpg" />
+    <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_2.jpg" />
+    <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_3.jpg" />
+    <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_4.jpg" />
+    <Content Include="Images\Homepage\OurBestsellers\product_1.jpg" />
+    <Content Include="Images\Homepage\OurBestsellers\product_2.jpg" />
+    <Content Include="Images\Homepage\OurBestsellers\product_3.jpg" />
+    <Content Include="Images\Homepage\OurBestsellers\product_4.jpg" />
+    <Content Include="Images\Profile\MemberProfile\defaultmember.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1899,6 +1908,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ComplexViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\EntityViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModels\VirtualViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModels\VirtualViewModel\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1917,6 +1930,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialHomePageProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -16,8 +16,8 @@ namespace ElectronicTrade.Entities
         public int Order_Member_Id { get; set; }     
         public int Order_Address_Id { get; set; }     
         public string Description { get; set; }
-        public DateTime AddedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? AddedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
         public Member member { get; set; }
         public Address address { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }

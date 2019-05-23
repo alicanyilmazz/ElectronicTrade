@@ -9,6 +9,13 @@ namespace ElectronicTrade.Entities
 {
     public class Product
     {
+        public Product()
+        {
+            productImages = new List<ProductImage>();
+            OrderDetails = new List<OrderDetail>();
+            comments = new List<Comment>();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -18,9 +25,10 @@ namespace ElectronicTrade.Entities
         public int UnitInStock { get; set; }
         public int StarGivenMemberCount { get; set; }
         public int Product_Category_Id { get; set; }
+        public int Discount { get; set; }
         public string UserBy { get; set; }
-        public DateTime AddedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? AddedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
         public Category category { get; set; }
         public List<ProductImage> productImages { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }

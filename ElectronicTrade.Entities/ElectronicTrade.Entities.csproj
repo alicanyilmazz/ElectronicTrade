@@ -59,6 +59,7 @@
     <Compile Include="ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="Roles\UserType.cs" />
     <Compile Include="User.cs" />
     <Compile Include="User_Role.cs" />
   </ItemGroup>

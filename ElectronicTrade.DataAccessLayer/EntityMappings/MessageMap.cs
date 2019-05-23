@@ -22,7 +22,7 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.Subject).HasColumnName("Subject");
             this.Property(x => x.Subject).HasColumnOrder(1);
             this.Property(x => x.Subject).IsOptional();
-            this.Property(x => x.Subject).HasMaxLength(25);
+            this.Property(x => x.Subject).HasMaxLength(40);
 
             this.Property(x => x.Text).HasColumnName("Text");
             this.Property(x => x.Text).HasColumnOrder(2);
@@ -52,26 +52,28 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
 
             this.Property(x => x.AddedDate).HasColumnName("AddedDate");
             this.Property(x => x.AddedDate).HasColumnOrder(8);
-            this.Property(x => x.AddedDate).IsRequired();
+            this.Property(x => x.AddedDate).IsOptional();
+            this.Property(x => x.AddedDate).HasColumnType("datetime2");
 
             this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
             this.Property(x => x.ModifiedDate).HasColumnOrder(9);
             this.Property(x => x.ModifiedDate).IsOptional();
+            this.Property(x => x.ModifiedDate).HasColumnType("datetime2");
 
             //Bir Member a birden fazla gelen incoming mesaj alabilir.Bir incoming mesaj bir bir Member 'a ait olabilir.
-            this.HasRequired(x => x.member)
+            this.HasOptional(x => x.takedmember)
               .WithMany(y => y.incomingmessages)
-              .HasForeignKey(x => x.Member_From_Id);
+              .HasForeignKey(x => x.Member_From_Id).WillCascadeOnDelete(false);
 
             //Bir Member a birden fazla outgoingmessages mesaj gönderilebilir.Bir outgoingmessages mesaj bir Member tarafından gönderilmiş olabilir.
-            this.HasRequired(x => x.member)
+            this.HasOptional(x => x.sendedmember)
              .WithMany(y => y.outgoingmessages)
-             .HasForeignKey(x => x.Member_To_Id);
+             .HasForeignKey(x => x.Member_To_Id).WillCascadeOnDelete(false);
 
             //Bir Message in bir parent mesaji olabilir.Ama birden fazla sub Messag 'i olabilir.
-            this.HasRequired(x => x.message)
+            this.HasOptional(x => x.message)
             .WithMany(y => y.messages)
-            .HasForeignKey(x => x.Parent_Message_Id);
+            .HasForeignKey(x => x.Parent_Message_Id).WillCascadeOnDelete(false);
         }
     }
 }

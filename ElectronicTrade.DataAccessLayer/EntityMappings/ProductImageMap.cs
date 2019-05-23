@@ -48,6 +48,16 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.UserBy).IsRequired();
             this.Property(x => x.UserBy).HasMaxLength(25);
 
+            this.Property(x => x.AddedDate).HasColumnName("AddedDate");
+            this.Property(x => x.AddedDate).HasColumnOrder(7);
+            this.Property(x => x.AddedDate).IsOptional();
+            this.Property(x => x.AddedDate).HasColumnType("datetime2");
+
+            this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
+            this.Property(x => x.ModifiedDate).HasColumnOrder(8);
+            this.Property(x => x.ModifiedDate).IsOptional();
+            this.Property(x => x.ModifiedDate).HasColumnType("datetime2");
+
             //Bir Product in birden fazla Image 'i olabilir.Fakat bir Image sadece bir Product 'a ait olabilir.
             this.HasRequired(x => x.product)
              .WithMany(y => y.productImages)

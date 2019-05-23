@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicTrade.DataAccessLayer.EntityMappings
 {
-    class ProductMap: EntityTypeConfiguration<Product>
+    class ProductMap : EntityTypeConfiguration<Product>
     {
         public ProductMap()
         {
@@ -21,7 +21,7 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
 
             this.Property(x => x.Product_Category_Id).HasColumnName("Product_Category_Id");
             this.Property(x => x.Product_Category_Id).HasColumnOrder(1);
-            this.Property(x => x.Product_Category_Id).IsRequired();
+            this.Property(x => x.Product_Category_Id).IsOptional();
 
             this.Property(x => x.Name).HasColumnName("Name");
             this.Property(x => x.Name).HasColumnOrder(2);
@@ -55,23 +55,29 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.StarGivenMemberCount).HasColumnOrder(8);
             this.Property(x => x.StarGivenMemberCount).IsRequired();
 
+            this.Property(x => x.Discount).HasColumnName("Discount");
+            this.Property(x => x.Discount).HasColumnOrder(9);
+            this.Property(x => x.Discount).IsOptional();
+
             this.Property(x => x.UserBy).HasColumnName("UserBy");
-            this.Property(x => x.UserBy).HasColumnOrder(9);
+            this.Property(x => x.UserBy).HasColumnOrder(10);
             this.Property(x => x.UserBy).IsRequired();
             this.Property(x => x.UserBy).HasMaxLength(25);
 
             this.Property(x => x.AddedDate).HasColumnName("AddedDate");
-            this.Property(x => x.AddedDate).HasColumnOrder(10);
-            this.Property(x => x.AddedDate).IsRequired();
+            this.Property(x => x.AddedDate).HasColumnOrder(11);
+            this.Property(x => x.AddedDate).IsOptional();
+            this.Property(x => x.AddedDate).HasColumnType("datetime2");
 
             this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
-            this.Property(x => x.ModifiedDate).HasColumnOrder(11);
+            this.Property(x => x.ModifiedDate).HasColumnOrder(12);
             this.Property(x => x.ModifiedDate).IsOptional();
+            this.Property(x => x.ModifiedDate).HasColumnType("datetime2");
 
             //Bir Product in bir Category si vardir.Ama bir Category nin birden fazla Product i olabilir.
-            this.HasRequired(x => x.category)
+            this.HasOptional(x => x.category)
                .WithMany(y => y.products)
-               .HasForeignKey(x => x.Product_Category_Id);
+               .HasForeignKey(x => x.Product_Category_Id).WillCascadeOnDelete(false);
 
 
         }

@@ -1,0 +1,63 @@
+﻿@using ElectronicTrade.Entities
+@model ElectronicTrade.Web.ViewModels.EntityViewModel.ProductViewModel
+
+@foreach (var item in Model.products)
+{
+
+    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4" style="margin-top:20px;">
+        <!-- Card -->
+        <div class="card card-cascade wider card-ecommerce">
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img src="~/Images/Homepage/DiscountedProducts/partialproduct_1.jpg" class="card-img-top"
+                     alt="sample photo">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Card image -->
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center">
+                <!-- Category & Title -->
+                <a href="" class="text-muted">
+                    <h5>@item.Product_Category_Id</h5>
+                </a>
+                <h4 class="card-title">
+                    <strong>
+                        <a href="">@item.Name</a>
+                        <span class="card-title"><span class="badge badge-danger" style="font-size:medium;">Sale %@item.Discount</span></span>
+                    </strong>
+                </h4>
+                <!-- Description -->
+                @if (string.IsNullOrEmpty(item.Description) == false && item.Description.Length > 70)
+                {
+                    <p class="card-text">@(item.Description.Substring(0, 70) + "...")</p>
+                }
+                else
+                {
+                    <p class="card-text">@item.Description</p>
+                }
+                <!-- Card footer -->
+                <div class="card-footer px-1" style="padding-top:10px;padding-bottom:30px;">
+                    <span class="float-left font-weight-bold">
+                        <strong>@item.Price$</strong>
+                    </span>
+
+                    <span class="float-right">
+                        <a class="" data-toggle="tooltip" data-placement="top" data-product-id="@item.Id" title="Add to Cart" style="padding:10px;">
+                            <i class="fas fa-cart-plus"></i>
+                        </a>
+                        <a class="" data-toggle="modal" data-target="#basicExampleModal" data-product-id="@item.Id" data-placement="top" title="information" style="padding:10px;">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <!-- Card content -->
+        </div>
+        <!-- Card -->
+    </div>
+
+}
+
+

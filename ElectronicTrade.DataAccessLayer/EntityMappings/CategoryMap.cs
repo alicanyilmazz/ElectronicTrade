@@ -59,16 +59,17 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
 
             this.Property(x => x.AddedDate).HasColumnName("AddedDate");
             this.Property(x => x.AddedDate).HasColumnOrder(9);
-            this.Property(x => x.AddedDate).IsRequired();
+            this.Property(x => x.AddedDate).IsOptional();
+            this.Property(x => x.AddedDate).HasColumnType("datetime2");
 
             this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
             this.Property(x => x.ModifiedDate).HasColumnOrder(10);
             this.Property(x => x.ModifiedDate).IsOptional();
 
             //Bir Category nin bir parent Category si olabilir.Fakat birden fazla SubCategory si olabilir.
-            this.HasRequired(x => x.ParentCategory)
+            this.HasOptional(x => x.ParentCategory)
                .WithMany(y => y.Categories)
-               .HasForeignKey(x => x.ParentCategory_Id);
+               .HasForeignKey(x => x.ParentCategory_Id).WillCascadeOnDelete(false);
         }
     }
 }

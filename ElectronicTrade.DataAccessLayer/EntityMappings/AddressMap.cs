@@ -25,7 +25,7 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.Name).HasColumnName("Name");
             this.Property(x => x.Name).HasColumnOrder(2);
             this.Property(x => x.Name).IsRequired();
-            this.Property(x => x.Name).HasMaxLength(20);
+            this.Property(x => x.Name).HasMaxLength(30);
 
             this.Property(x => x.Description).HasColumnName("Description");
             this.Property(x => x.Description).HasColumnOrder(3);
@@ -39,11 +39,13 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
 
             this.Property(x => x.AddedDate).HasColumnName("AddedDate");
             this.Property(x => x.AddedDate).HasColumnOrder(5);
-            this.Property(x => x.AddedDate).IsRequired();
+            this.Property(x => x.AddedDate).IsOptional();
+            this.Property(x => x.AddedDate).HasColumnType("datetime2");
 
             this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
             this.Property(x => x.ModifiedDate).HasColumnOrder(6);
             this.Property(x => x.ModifiedDate).IsOptional();
+            this.Property(x => x.ModifiedDate).HasColumnType("datetime2");
 
             //Bir Adresin bir Member i vardir.Bir Member in birden fazla Adresi olabilir.
             this.HasRequired(x => x.member)     

@@ -47,11 +47,13 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
 
             this.Property(x => x.AddedDate).HasColumnName("AddedDate");
             this.Property(x => x.AddedDate).HasColumnOrder(7);
-            this.Property(x => x.AddedDate).IsRequired();
+            this.Property(x => x.AddedDate).IsOptional();
+            this.Property(x => x.AddedDate).HasColumnType("datetime2");
 
             this.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
             this.Property(x => x.ModifiedDate).HasColumnOrder(8);
             this.Property(x => x.ModifiedDate).IsOptional();
+            this.Property(x => x.ModifiedDate).HasColumnType("datetime2");
 
             // OrderDetail - Order Many-to-Many Common Table
             this.HasRequired(x => x.order)

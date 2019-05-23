@@ -13,7 +13,7 @@ namespace ElectronicTrade.BusinessLayer
        public void testing_method()
         {
             DatabaseContext db = new DatabaseContext();
-            db.db_localization.ToList();
+            db.db_member.ToList();
         }
     }
 }
