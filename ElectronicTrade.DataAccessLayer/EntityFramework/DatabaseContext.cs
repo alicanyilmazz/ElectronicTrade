@@ -32,6 +32,7 @@ namespace ElectronicTrade.DataAccessLayer.EntityFramework
         public DatabaseContext()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, ElectronicTrade.DataAccessLayer.Migrations.Configuration>());
+            Database.SetInitializer(new Migrations.MyInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

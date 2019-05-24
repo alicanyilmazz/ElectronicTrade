@@ -69,6 +69,7 @@
     <Compile Include="EntityMappings\UserMap.cs" />
     <Compile Include="EntityMappings\User_RoleMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\MyInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
