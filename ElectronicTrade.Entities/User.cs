@@ -8,6 +8,10 @@ namespace ElectronicTrade.Entities
 {
     public class User
     {
+        public User()
+        {
+            user_roles = new List<User_Role>();
+        }
         public int Id { get; set; }
         public string Username { get; set; }
         public string Surname { get; set; }

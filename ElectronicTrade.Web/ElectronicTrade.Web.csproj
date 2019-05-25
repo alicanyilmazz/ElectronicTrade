@@ -102,7 +102,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Bootswatch\bootstrap.min %2813%29.css" />
+    <Content Include="Content\InfiniteCategory\InfinityCategory.css" />
     <Content Include="Content\mdb\css\addons\datatables-select.css" />
     <Content Include="Content\mdb\css\addons\datatables-select.min.css" />
     <Content Include="Content\mdb\css\addons\datatables.css" />
@@ -1723,6 +1723,7 @@
     <Content Include="Images\Homepage\DiscountedProducts\partialproduct_4.jpg" />
     <Content Include="Images\Homepage\DiscountedProducts\partialproduct_5.jpg" />
     <Content Include="Images\Homepage\DiscountedProducts\partialproduct_6.jpg" />
+    <Content Include="Images\Homepage\icons\Arrow.png" />
     <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_1.jpg" />
     <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_2.jpg" />
     <Content Include="Images\Homepage\MostPopularCategories\hmpgcproduct_3.jpg" />
@@ -1931,6 +1932,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_PartialHomePageProduct.cshtml" />
+    <Content Include="Views\Shared\_PartialInfiniteCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

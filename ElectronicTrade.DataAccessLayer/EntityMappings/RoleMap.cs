@@ -23,6 +23,12 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.Name).HasColumnOrder(1);
             this.Property(x => x.Name).IsRequired();
             this.Property(x => x.Name).HasMaxLength(25);
+
+            this.Property(x => x.RoleType).HasColumnName("RoleType");
+            this.Property(x => x.Name).HasColumnOrder(2);
+            this.Property(x => x.RoleType).HasColumnType("byte");
+            //this.Property(x => x.Name).IsRequired();
+           
         }
     }
 }

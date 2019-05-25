@@ -3,6 +3,12 @@
     ViewBag.Title = "Index";
 }
 
+    @*-----------------------Infinite Category Begin----------------------*@
+
+    @Html.Partial("_PartialInfiniteCategory")    
+
+    @*-----------------------Infinite Category End----------------------*@
+
 
     @*-------------------------Top Carosel Begin--------------------------*@
 
@@ -361,9 +367,9 @@
         <div class="row">
 
             <!-- Grid column -->
-          @Html.Action("HomeProduct","Home")
+            @Html.Action("HomeProduct", "Home")
             <!-- Grid column -->
-         
+
         </div>
         <!-- Grid row -->
 
@@ -375,7 +381,7 @@
 </div>
 
 
-    @*-------------------------Information Modal--------------------------*@
+@*-------------------------Information Modal--------------------------*@
 
 
 <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -415,4 +421,4 @@
 </div>
 
 
-   @*--------------------------Information Modal--------------------------*@
+@*--------------------------Information Modal--------------------------*@

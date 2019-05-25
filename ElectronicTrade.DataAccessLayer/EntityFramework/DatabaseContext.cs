@@ -11,6 +11,13 @@ namespace ElectronicTrade.DataAccessLayer.EntityFramework
 {
     public class DatabaseContext : DbContext
     {
+
+        public DatabaseContext() : base("Name=DatabaseContext")
+        {
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, ElectronicTrade.DataAccessLayer.Migrations.Configuration>());
+            Database.SetInitializer(new DatabaseInitializer.Initializer());
+        }
+
         public DbSet<Address> db_address { get; set; }
         public DbSet<Category> db_category { get; set; }
         public DbSet<Comment> db_comment { get; set; }
@@ -27,12 +34,6 @@ namespace ElectronicTrade.DataAccessLayer.EntityFramework
         public DbSet<Role> db_role { get; set; }
         public DbSet<User_Role> db_user_role { get; set; }
         public DbSet<User> db_user { get; set; }
-        
-
-        public DatabaseContext()
-        {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, ElectronicTrade.DataAccessLayer.Migrations.Configuration>());
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -53,7 +54,7 @@ namespace ElectronicTrade.DataAccessLayer.EntityFramework
             modelBuilder.Configurations.Add(new RoleMap());
             modelBuilder.Configurations.Add(new User_RoleMap());
             modelBuilder.Configurations.Add(new UserMap());
-           
+
 
 
         }

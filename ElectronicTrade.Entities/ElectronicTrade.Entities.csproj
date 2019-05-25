@@ -45,6 +45,8 @@
     <Compile Include="Address.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="EntityEnums\BadgeType\Badge.cs" />
+    <Compile Include="EntityEnums\UserRoleType\RoleType.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Log.cs" />

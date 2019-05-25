@@ -9,6 +9,11 @@ namespace ElectronicTrade.Entities
 {
     public class Address
     {
+        public Address()
+        {
+            orders = new List<Order>();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

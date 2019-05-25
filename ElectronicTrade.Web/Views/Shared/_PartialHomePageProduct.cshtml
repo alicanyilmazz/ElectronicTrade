@@ -1,4 +1,5 @@
 ﻿@using ElectronicTrade.Entities
+@using ElectronicTrade.Entities.EntityEnums.BadgeType
 @model ElectronicTrade.Web.ViewModels.EntityViewModel.ProductViewModel
 
 @foreach (var item in Model.products)
@@ -9,7 +10,7 @@
         <div class="card card-cascade wider card-ecommerce">
             <!-- Card image -->
             <div class="view view-cascade overlay">
-                <img src="~/Images/Homepage/DiscountedProducts/partialproduct_1.jpg" class="card-img-top"
+                <img src="~/Images/Homepage/DiscountedProducts/@item.productImages[0].FirstImageName" class="card-img-top"
                      alt="sample photo">
                 <a>
                     <div class="mask rgba-white-slight"></div>
@@ -19,13 +20,24 @@
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
                 <!-- Category & Title -->
-                <a href="" class="text-muted">
-                    <h5>@item.Product_Category_Id</h5>
+                <a href="/@item.category.ControllerName/@item.category.ActionName/@item.category.QueryStrings" class="text-muted">
+                    <h5>@item.category.Name</h5>
                 </a>
                 <h4 class="card-title">
                     <strong>
                         <a href="">@item.Name</a>
-                        <span class="card-title"><span class="badge badge-danger" style="font-size:medium;">Sale %@item.Discount</span></span>
+                        @if (item.BadgeType == Badge.Sale)
+                        {
+                            <span class="card-title"><span class="badge badge-danger" style="font-size:medium;">Sale %@item.Discount</span></span>
+                        }
+                        else if (item.BadgeType == Badge.New)
+                        {
+                            <span class="card-title"><span class="badge badge-info" style="font-size:medium;">New</span></span>
+                        }
+                        else if (item.BadgeType == Badge.Best)
+                        {
+                            <span class="card-title"><span class="badge badge-warning" style="font-size:medium;">Best</span></span>
+                        }
                     </strong>
                 </h4>
                 <!-- Description -->

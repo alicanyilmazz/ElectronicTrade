@@ -22,27 +22,27 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.Name).HasColumnName("Name");
             this.Property(x => x.Name).HasColumnOrder(1);
             this.Property(x => x.Name).IsRequired();
-            this.Property(x => x.Name).HasMaxLength(25);
+            this.Property(x => x.Name).HasMaxLength(50);
 
             this.Property(x => x.Description).HasColumnName("Description");
             this.Property(x => x.Description).HasColumnOrder(2);
             this.Property(x => x.Description).IsRequired();
-            this.Property(x => x.Description).HasMaxLength(125);
+            this.Property(x => x.Description).HasMaxLength(300);
 
             this.Property(x => x.ActionName).HasColumnName("ActionName");
             this.Property(x => x.ActionName).HasColumnOrder(3);
             this.Property(x => x.ActionName).IsRequired();
-            this.Property(x => x.ActionName).HasMaxLength(25);
+            this.Property(x => x.ActionName).HasMaxLength(50);
 
             this.Property(x => x.ControllerName).HasColumnName("ControllerName");
             this.Property(x => x.ControllerName).HasColumnOrder(4);
             this.Property(x => x.ControllerName).IsRequired();
-            this.Property(x => x.ControllerName).HasMaxLength(25);
+            this.Property(x => x.ControllerName).HasMaxLength(50);
 
             this.Property(x => x.QueryStrings).HasColumnName("QueryStrings");
             this.Property(x => x.QueryStrings).HasColumnOrder(5);
             this.Property(x => x.QueryStrings).IsOptional();
-            this.Property(x => x.QueryStrings).HasMaxLength(25);
+            this.Property(x => x.QueryStrings).HasMaxLength(50);
 
             this.Property(x => x.OrderNumber).HasColumnName("OrderNumber");
             this.Property(x => x.OrderNumber).HasColumnOrder(6);

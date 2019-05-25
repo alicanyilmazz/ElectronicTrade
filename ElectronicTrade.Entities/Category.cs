@@ -13,6 +13,7 @@ namespace ElectronicTrade.Entities
         {
             Categories = new List<Category>();
             products = new List<Product>();
+
         }
         public int Id { get; set; }
         public string Name { get; set; }

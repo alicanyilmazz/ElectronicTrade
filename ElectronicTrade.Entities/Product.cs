@@ -1,4 +1,5 @@
 ﻿
+using ElectronicTrade.Entities.EntityEnums.BadgeType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace ElectronicTrade.Entities
         public int Product_Category_Id { get; set; }
         public int Discount { get; set; }
         public string UserBy { get; set; }
+        public Badge BadgeType { get; set; }
         public DateTime? AddedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public Category category { get; set; }

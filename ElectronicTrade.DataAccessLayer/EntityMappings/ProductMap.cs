@@ -31,7 +31,7 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.Description).HasColumnName("Description");
             this.Property(x => x.Description).HasColumnOrder(3);
             this.Property(x => x.Description).IsRequired();
-            this.Property(x => x.Description).HasMaxLength(25);
+            this.Property(x => x.Description).HasMaxLength(300);
 
             this.Property(x => x.Price).HasColumnName("Price");
             this.Property(x => x.Price).HasColumnOrder(4);
@@ -73,6 +73,11 @@ namespace ElectronicTrade.DataAccessLayer.EntityMappings
             this.Property(x => x.ModifiedDate).HasColumnOrder(12);
             this.Property(x => x.ModifiedDate).IsOptional();
             this.Property(x => x.ModifiedDate).HasColumnType("datetime2");
+
+            this.Property(x => x.BadgeType).HasColumnName("BadgeType");
+            this.Property(x => x.ModifiedDate).HasColumnOrder(13);
+            //this.Property(x => x.ModifiedDate).IsOptional();
+            this.Property(x => x.ModifiedDate).HasColumnType("byte");
 
             //Bir Product in bir Category si vardir.Ama bir Category nin birden fazla Product i olabilir.
             this.HasOptional(x => x.category)

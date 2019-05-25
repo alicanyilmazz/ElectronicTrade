@@ -1,24 +1,20 @@
-﻿namespace ElectronicTrade.DataAccessLayer.Migrations
+﻿using ElectronicTrade.DataAccessLayer.EntityFramework;
+using ElectronicTrade.Entities;
+using ElectronicTrade.Entities.EntityEnums.BadgeType;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElectronicTrade.DataAccessLayer.DatabaseInitializer
 {
-    using ElectronicTrade.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<ElectronicTrade.DataAccessLayer.EntityFramework.DatabaseContext>
+    public class Initializer: CreateDatabaseIfNotExists<DatabaseContext>
     {
-        public Configuration()
+        protected override void Seed(DatabaseContext context)
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "ElectronicTrade.DataAccessLayer.EntityFramework.DatabaseContext";
-        }
-
-        protected override void Seed(ElectronicTrade.DataAccessLayer.EntityFramework.DatabaseContext context)
-        {
-            //int counter = 1;
+            int counter = 1;
             int messagecounter = 1;
 
             DateTime now = DateTime.Now;
@@ -31,7 +27,7 @@
             {
                 Member members = new Member()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     Name = FakeData.NameData.GetFirstName(),
                     Surname = FakeData.NameData.GetSurname(),
                     Email = FakeData.NameData.GetSurname(),
@@ -42,7 +38,7 @@
                     AddedDate = now,
                 };
 
-                context.db_member.AddOrUpdate(members);
+                context.db_member.Add(members);
             }
 
             context.SaveChanges();
@@ -63,7 +59,7 @@
 
                 Category rootcategory = new Category()
                 {
-                    Id = i + 1,
+                    //Id = counter,
                     Name = $"Root Menu {i + 1}",
                     Description = FakeData.TextData.GetSentence(),
                     ActionName = $"Index{i + 1}",
@@ -77,7 +73,9 @@
 
                 };
 
-                context.db_category.AddOrUpdate(rootcategory);
+                context.db_category.Add(rootcategory);
+
+                counter++;
 
             }
 
@@ -93,18 +91,16 @@
 
             //--------/----------Adding Sub Categories Begin---/----------//
 
-            int[,] subcategoryarray = new int[3, 2] { { 4, 5 }, { 6, 7 }, { 8, 9 } };
-
             #region
-
-            for (int i = 0; i < rootcategory_list.Count; i++)
+            foreach (Category rootcategory in rootcategory_list)
             {
-                for (int j = 0; j < 2; j++)
+
+                for (int i = 0; i < 1; i++)
                 {
 
                     Category subcategory = new Category()
                     {
-                        Id = subcategoryarray[i, j],
+                        //Id = counter,
                         Name = $"Sub Menu {i + 1}",
                         Description = FakeData.TextData.GetSentence(),
                         ActionName = $"Sub Index{i + 1}",
@@ -112,13 +108,14 @@
                         QueryStrings = $"Sub Query{i + 1}",
                         OrderNumber = i + 1,
                         UserBy = "BySystem",
-                        ParentCategory = rootcategory_list[i],
+                        ParentCategory = rootcategory,
                         AddedDate = now
 
                     };
 
-                    context.db_category.AddOrUpdate(subcategory);
+                    context.db_category.Add(subcategory);
 
+                    counter++;
                 }
             }
 
@@ -134,16 +131,14 @@
 
             //---------/---------Adding Sub sub Categories Begin-----/----//
 
-            int[,] subsubcategoryarray = new int[6, 2] { { 10, 11 }, { 12, 13 }, { 14, 15 }, { 16, 17 }, { 18, 19 }, { 20, 21 } };
-
             #region
-            for (int i = 0; i < subcategory_list.Count; i++)
+            foreach (Category subcategory in subcategory_list)
             {
-                for (int j = 0; j < 2; j++)
+                for (int i = 0; i < 1; i++)
                 {
                     Category subsubcategory = new Category()
                     {
-                        Id = subsubcategoryarray[i, j],
+                        //Id =counter,
                         Name = $"Sub sub Menu {i + 1}",
                         Description = FakeData.TextData.GetSentence(),
                         ActionName = $"Sub sub Index{i + 1}",
@@ -151,14 +146,14 @@
                         QueryStrings = $"Sub sub Query{i + 1}",
                         OrderNumber = i + 1,
                         UserBy = "BySystem",
-                        ParentCategory = subcategory_list[i],
+                        ParentCategory = subcategory,
                         AddedDate = now
                     };
 
-                    context.db_category.AddOrUpdate(subsubcategory);
+                    context.db_category.Add(subsubcategory);
 
+                    counter++;
                 }
-
             }
 
             context.SaveChanges();
@@ -180,9 +175,9 @@
 
                 Product products = new Product()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     Name = $"ProductName{i}",
-                    Description = $"deneme{i}",
+                    Description = FakeData.TextData.GetSentence(),
                     Price = FakeData.NumberData.GetNumber(1, 60),
                     StarPoint = FakeData.NumberData.GetNumber(5, 65),
                     StockStatus = "In Stock",
@@ -191,11 +186,12 @@
                     Discount = FakeData.NumberData.GetNumber(3, 45),
                     UserBy = "BySystem",
                     AddedDate = now,
+                    BadgeType=ReturnBadge(i),
                     category = product_category
 
                 };
 
-                context.db_product.AddOrUpdate(products);
+                context.db_product.Add(products);
 
             }
 
@@ -216,7 +212,7 @@
             {
                 ProductImage productImage = new ProductImage()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     FirstImageName = $"partialproduct_{FakeData.NumberData.GetNumber(1, 6)}.jpg",
                     SecondImageName = $"partialproduct_{FakeData.NumberData.GetNumber(1, 6)}.jpg",
                     ThirdImageName = $"partialproduct_{FakeData.NumberData.GetNumber(1, 6)}.jpg",
@@ -227,7 +223,7 @@
 
                 };
 
-                context.db_productimage.AddOrUpdate(productImage);
+                context.db_productimage.Add(productImage);
             }
 
             context.SaveChanges();
@@ -245,7 +241,7 @@
             {
                 Comment comments = new Comment()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     Text = FakeData.TextData.GetSentence(),
                     UserBy = "BySystem",
                     AddedDate = now,
@@ -253,7 +249,7 @@
                     product = product_list[FakeData.NumberData.GetNumber(0, product_list.Count - 1)]
                 };
 
-                context.db_comment.AddOrUpdate(comments);
+                context.db_comment.Add(comments);
             }
 
             context.SaveChanges();
@@ -270,7 +266,7 @@
             {
                 Address addresses = new Address()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     Name = FakeData.PlaceData.GetStreetName(),
                     Description = FakeData.PlaceData.GetAddress(),
                     UserBy = "BySystem",
@@ -278,7 +274,7 @@
                     member = user_list[i]
                 };
 
-                context.db_address.AddOrUpdate(addresses);
+                context.db_address.Add(addresses);
             }
 
             context.SaveChanges();
@@ -302,7 +298,7 @@
 
                 Order orders = new Order()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     Number = FakeData.TextData.GetAlphabetical(10),
                     Status = "Preparing",
                     UserBy = "BySystem",
@@ -313,7 +309,7 @@
 
                 };
 
-                context.db_order.AddOrUpdate(orders);
+                context.db_order.Add(orders);
             }
 
             context.SaveChanges();
@@ -334,7 +330,7 @@
             {
                 OrderDetail orderdetails = new OrderDetail()
                 {
-                    Id = i + 1,
+                    //Id = i + 1,
                     Price = FakeData.NumberData.GetNumber(1, 100),
                     Quantity = FakeData.NumberData.GetNumber(1, 125),
                     Discount = FakeData.NumberData.GetNumber(1, 90),
@@ -345,7 +341,7 @@
 
                 };
 
-                context.db_orderdetail.AddOrUpdate(orderdetails);
+                context.db_orderdetail.Add(orderdetails);
             }
 
             context.SaveChanges();
@@ -358,14 +354,14 @@
 
             #region
 
-            List<string> FakeSubject = new List<string>() { "Hesabim calindi", "Yanlis siparis", "Yorum yapamıyorum", "Stokta urun yok", "Kredi kartım calindi", "Hakaret edildi", "Dolandırıldım", "Bilgilerimi unuttum" };
+            List<string> FakeSubject = new List<string>() { "Hesabim calindi", "Yanlis siparis", "Yorum yapamiyorum", "Stokta urun yok", "Kredi kartim calindi", "Hakaret edildi", "Dolandirildim", "Bilgilerimi unuttum" };
 
 
             for (int i = 0; i < 3; i++)
             {
                 Message rootmessage = new Message()
                 {
-                    Id = messagecounter,
+                    //Id = messagecounter,
                     Subject = FakeSubject[FakeData.NumberData.GetNumber(0, FakeSubject.Count - 1)],
                     Text = FakeData.TextData.GetSentence(),
                     UserBy = "System",
@@ -377,7 +373,7 @@
 
                 };
 
-                context.db_message.AddOrUpdate(rootmessage);
+                context.db_message.Add(rootmessage);
 
                 messagecounter++;
             }
@@ -390,7 +386,7 @@
             {
                 Message replymessage = new Message()
                 {
-                    Id = messagecounter,
+                    //Id = messagecounter,
                     //Subject = FakeData.TextData.GetSentence(),
                     Text = FakeData.TextData.GetSentence(),
                     UserBy = "System",
@@ -401,7 +397,7 @@
                     message = message_list[i]
                 };
 
-                context.db_message.AddOrUpdate(replymessage);
+                context.db_message.Add(replymessage);
 
                 messagecounter++;
             }
@@ -410,6 +406,19 @@
             #endregion
 
             //------------------Adding Message End------------------//
+        }
+
+        public Badge ReturnBadge(int i)
+        {
+            if (i%2==0)
+            {
+                return Badge.Sale;
+            }
+            else
+            {
+                return Badge.Best;
+            }
+           
         }
     }
 }
